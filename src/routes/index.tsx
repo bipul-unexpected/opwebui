@@ -19,16 +19,17 @@ import {
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/openpath-logo.png";
 import { Reveal } from "@/components/openpath/Reveal";
+import { Contact } from "@/components/openpath/Contact";
 import { DashboardPreview } from "@/components/openpath/DashboardPreview";
 import grokLogo from "@/assets/ai/grok.svg";
 import chatgptLogo from "@/assets/ai/chatgpt.svg";
 import claudeLogo from "@/assets/ai/claude.svg";
 import notionLogo from "@/assets/ai/notion.svg";
-import { TypeLines, CountUp, InViewWords, ScrollHighlight, ScrollTilt, useScrolled } from "@/components/openpath/motion";
+import { InViewWords, ScrollHighlight, ScrollTilt, useScrolled } from "@/components/openpath/motion";
 
-const GITHUB = "https://github.com/bipulroy/openpath";
+const GITHUB = "https://github.com/bipul-unexpected/OpeNpaTh";
 const QUICKSTART =
-  "git clone https://github.com/bipulroy/openpath.git && cd openpath && pip install fastapi uvicorn psutil && python server.py";
+  "git clone https://github.com/bipul-unexpected/OpeNpaTh.git";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +38,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Give Grok, ChatGPT, Claude and Notion AI path-jailed terminal and file access to one folder on your PC, with Git rollbacks and a 100ms kill switch.",
+          "Connect cloud AI to a local workspace with OpenPath: file tools, terminal execution, approvals, audit logs, Git snapshots and an emergency stop.",
       },
       { property: "og:title", content: "OpeNpaTh — Your Cloud AI's Brain. Your Local PC's Hands." },
       {
@@ -56,11 +57,11 @@ function useCopy() {
   const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
     } catch {
-      /* clipboard unavailable */
+      // Clipboard may be unavailable in an insecure context.
     }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
   };
   return { copied, copy };
 }
@@ -92,7 +93,7 @@ function Nav() {
           ))}
         </div>
         <Button asChild size="sm" className="h-7 rounded-full px-4 text-xs transition-transform duration-300 hover:scale-105 active:scale-95">
-          <a href={GITHUB} target="_blank" rel="noreferrer">Download</a>
+          <a href="/download">Download</a>
         </Button>
       </nav>
     </header>
@@ -108,11 +109,11 @@ function Hero() {
         <div className="fade-up" style={{ animationDelay: "100ms" }}>
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-live" />
-            v1.0 Open-Source Release • Zero-Account Cloudflare Tunnels
+            Open source • Cloudflare and Ngrok tunnels
           </span>
         </div>
         <h1 className="mx-auto mt-8 max-w-5xl text-4xl font-semibold leading-[1.06] tracking-[-0.035em] md:text-6xl lg:text-[68px] track-in">
-          <TypeLines lines={[{ text: "Stop Being Copy-Paste Labor for Your AI." }, { text: "Let Any Cloud AI Build Directly Inside Your PC Folder.", className: "text-gradient" }]} />
+          <span className="block">Stop being copy-paste labor for your AI.</span><span className="block text-gradient">Let cloud AI work in your local folder.</span>
         </h1>
         <p
           className="fade-up mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
@@ -134,7 +135,7 @@ function Hero() {
         <div className="fade-up" style={{ animationDelay: "3800ms" }}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Button asChild size="lg" className="h-12 rounded-full px-7 text-[15px] transition-transform duration-300 hover:scale-[1.04] active:scale-95">
-              <a href={GITHUB} target="_blank" rel="noreferrer">Download OpeNpaTh Mini</a>
+              <a href="/download">Download OpeNpaTh</a>
             </Button>
             <Button asChild size="lg" variant="ghost" className="group h-12 rounded-full px-6 text-[15px] text-primary-soft hover:bg-accent hover:text-primary-soft">
               <a href="#demo">
@@ -148,7 +149,7 @@ function Hero() {
             className="mx-auto mt-6 flex items-center gap-2 rounded-full border border-border bg-ink px-4 py-2 font-mono text-xs text-muted-foreground transition hover:text-foreground active:scale-95"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-live" /> : <Copy className="h-3.5 w-3.5" />}
-            {copied ? "Quickstart copied" : "Copy quickstart command"}
+            {copied ? "Clone command copied" : "Copy clone command"}
           </button>
         </div>
         <div id="demo" className="fade-up mt-20 scroll-mt-24" style={{ animationDelay: "4000ms" }}>
@@ -195,7 +196,7 @@ function Statement() {
     <section className="mx-auto max-w-5xl px-6 py-32 md:py-44">
       <ScrollHighlight
         className="text-3xl font-semibold leading-[1.18] tracking-[-0.025em] md:text-5xl lg:text-[56px]"
-        text="OpeNpaTh turns the AI you already use into a developer that works right on your machine. It writes the files. Runs the commands. Launches the servers. And you can stop all of it in a tenth of a second."
+        text="OpeNpaTh turns the AI you already use into a collaborator that can work on your machine. It edits files, runs commands and starts servers while you stay in control."
       />
     </section>
   );
@@ -267,7 +268,7 @@ function Features() {
         <Reveal className="text-center">
           <p className="text-sm font-medium text-primary">Features</p>
           <h2 className="mx-auto mt-3 max-w-3xl text-4xl font-semibold tracking-[-0.03em] md:text-6xl">
-            <InViewWords segments={[{ text: "Everything a cloud AI needs." }, { text: "Nothing it shouldn't have.", className: "text-muted-foreground" }]} />
+            <InViewWords segments={[{ text: "Everything a cloud AI needs." }, { text: "With controls you can review.", className: "text-muted-foreground" }]} />
           </h2>
         </Reveal>
 
@@ -278,7 +279,7 @@ function Features() {
                 <Cloud className="lift-icon h-8 w-8 text-primary" />
                 <h3 className="mt-6 text-3xl font-semibold tracking-tight">Zero-account tunnels.</h3>
                 <p className="mt-3 max-w-md text-muted-foreground">
-                  Instant public Cloudflare URLs in three seconds — no sign-up, no login. Run Ngrok alongside for automatic failover.
+                  Cloudflare Quick Tunnels work without an account. Run Ngrok alongside for automatic failover.
                 </p>
               </div>
               <div className="mt-8 space-y-2 font-mono text-xs">
@@ -300,9 +301,9 @@ function Features() {
             <div className="lift flex h-full flex-col rounded-[28px] bg-crush p-9 text-destructive-foreground">
               <Octagon className="lift-icon h-8 w-8" />
               <h3 className="mt-6 text-3xl font-semibold tracking-tight">Stop & Crush.</h3>
-              <p className="mt-3 opacity-85">Kill every process, cut the tunnels and rotate the token.</p>
+              <p className="mt-3 opacity-85">Stop managed processes, cut the tunnels and rotate the token.</p>
               <p className="mt-auto pt-8 text-6xl font-semibold tracking-tighter">
-                &lt;<CountUp to={100} /><span className="text-2xl">ms</span>
+                STOP
               </p>
               <p className="mt-1 font-mono text-xs opacity-80">Ctrl + Shift + K</p>
             </div>
@@ -328,7 +329,7 @@ function Features() {
               <GitBranch className="lift-icon h-8 w-8 text-live" />
               <h3 className="mt-6 text-2xl font-semibold tracking-tight">Git Time Machine.</h3>
               <p className="mt-3 text-muted-foreground">
-                Automatic pre-AI checkpoints. If something breaks, roll back byte-for-byte in one click.
+                Create Git checkpoints before changes and roll back when needed. Check the documentation for rollback behavior.
               </p>
             </div>
           </Reveal>
@@ -349,7 +350,7 @@ function Features() {
                 <FileCode2 className="lift-icon h-8 w-8 text-primary" />
                 <h3 className="mt-6 text-3xl font-semibold tracking-tight">One file. Any AI.</h3>
                 <p className="mt-3 max-w-md text-muted-foreground">
-                  connection.md carries your tunnel URL, token and rules, plus a 50-line Python client using only the standard
+                  connection.md carries your tunnel URL, token and rules, plus a Python client using only the standard
                   library. If your chat AI can run Python, it can drive OpeNpaTh.
                 </p>
               </div>
@@ -359,10 +360,11 @@ BASE_URL = "https://quiet-river-7x2k.trycloudflare.com"
 TOKEN    = "op_9f2c…e41a"
 MODE     = "FULL_AUTO"
 
-client = OpeNpaThClient(BASE_URL, TOKEN)
-client.write("src/app.py", code)
-client.run("pip install -r requirements.txt")
-client.run("python app.py", background=True)`}
+from openpath_client import OpenPathClient
+client = OpenPathClient(base_url=BASE_URL, token=TOKEN)
+client.handshake()
+client.write_file("hello.py", "print('Hello')")
+client.run_command("python hello.py")`}
               </pre>
             </div>
           </Reveal>
@@ -374,7 +376,7 @@ client.run("python app.py", background=True)`}
 
 function HowItWorks() {
   const steps = [
-    { n: "01", t: "Lock your folder.", d: "Choose a project folder and click Start Cloudflare. A live URL appears in 3 seconds." },
+    { n: "01", t: "Lock your folder.", d: "Choose a project folder and start a Cloudflare tunnel to create a public URL." },
     { n: "02", t: "Paste connection.md.", d: "Copy it with one click and drop it into Grok, ChatGPT, Claude or any AI chat." },
     { n: "03", t: "Watch it build.", d: "Follow the live stream as the AI writes files, installs packages and launches your app." },
   ];
@@ -382,7 +384,7 @@ function HowItWorks() {
     <section id="how" className="mx-auto max-w-6xl scroll-mt-16 px-6 py-28">
       <Reveal className="text-center">
         <p className="text-sm font-medium text-primary">How it works</p>
-        <h2 className="mt-3 text-4xl font-semibold tracking-[-0.03em] md:text-6xl"><InViewWords segments={[{ text: "Connected in 15 seconds." }]} /></h2>
+        <h2 className="mt-3 text-4xl font-semibold tracking-[-0.03em] md:text-6xl"><InViewWords segments={[{ text: "Connect in three steps." }]} /></h2>
       </Reveal>
       <div className="relative mt-16 grid gap-10 md:grid-cols-3">
         <Reveal className="absolute left-0 right-0 top-6 hidden md:block">
@@ -409,10 +411,10 @@ function HowItWorks() {
 
 function Security() {
   const pillars = [
-    { icon: Lock, t: "Workspace jail", d: "Every path is resolved and checked. Escapes like ../../ are blocked instantly." },
-    { icon: KeyRound, t: "256-bit tokens", d: "Rotatable secret keys. One click locks out any running script." },
+    { icon: Lock, t: "Workspace jail", d: "The file API resolves and checks paths against your selected workspace." },
+    { icon: KeyRound, t: "Rotatable tokens", d: "Rotate your secret key to revoke access for future gateway requests." },
     { icon: ShieldAlert, t: "Command blacklist", d: "rm -rf /, format, shutdown and friends are blocked — even in Full Auto." },
-    { icon: Octagon, t: "Emergency switch", d: "A five-stage lockdown that drops back to manual approval in under 100ms." },
+    { icon: Octagon, t: "Emergency switch", d: "A five-stage lockdown that stops managed processes and forces manual approval." },
   ];
   return (
     <section id="security" className="scroll-mt-16 bg-ink py-28">
@@ -425,6 +427,7 @@ function Security() {
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
             Autonomy without anxiety. Your machine stays yours.
           </p>
+          <p className="mx-auto mt-5 max-w-2xl text-sm text-muted-foreground">The file API has a path jail, but shell execution is not a hard sandbox. For untrusted AI, disable command execution, require approval, or use a VM or isolated OS user. Treat connection.md like a password. <a className="text-primary underline" href={`${GITHUB}#6-security-model`}>Read the security model</a>.</p>
         </Reveal>
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p, i) => (
@@ -440,6 +443,18 @@ function Security() {
       </div>
     </section>
   );
+}
+
+function FAQ() {
+  const questions = [
+    ["What is OpeNpaTh?", "OpeNpaTh is an open source gateway that connects a remote AI assistant to a local workspace through an authenticated tunnel."],
+    ["Which systems are supported?", "The release offers Windows x64, macOS Apple silicon and Intel, and Linux x64 downloads. Choose your exact build on the downloads page."],
+    ["Which Windows download should I choose?", "Most Windows users can use the portable ZIP: extract it and open OpeNpaTh.exe. An installer is also available."],
+    ["Does my AI need an account?", "Your AI must be able to run code and make outbound HTTPS requests. Cloudflare Quick Tunnels do not require a Cloudflare account; other tunnel options may require one."],
+    ["Can an AI access anything outside my project?", "The file API restricts paths, but shell commands are not a hard sandbox. Disable execution, require approval or use a VM or isolated OS user for untrusted AI."],
+    ["How do I report a problem?", "Open an issue on the GitHub repository. Never include your bearer token or connection.md in a public report."],
+  ];
+  return <section id="faq" className="mx-auto max-w-4xl scroll-mt-20 px-6 py-20"><p className="text-sm font-medium text-primary">GOOD TO KNOW</p><h2 className="mt-4 text-4xl font-semibold tracking-tight">Frequently asked questions</h2><div className="mt-8 space-y-3">{questions.map(([question, answer]) => <details key={question} className="rounded-xl border border-border bg-card p-5"><summary className="cursor-pointer font-semibold focus-visible:outline-2 focus-visible:outline-primary">{question}</summary><p className="mt-3 text-muted-foreground">{answer}</p></details>)}</div></section>;
 }
 
 function FinalCta() {
@@ -463,7 +478,7 @@ function FinalCta() {
             </Button>
           </div>
           <Button asChild size="lg" className="mt-8 h-12 rounded-full px-8 text-[15px]">
-            <a href={GITHUB} target="_blank" rel="noreferrer">Download OpeNpaTh Mini</a>
+            <a href="/download">Download OpeNpaTh</a>
           </Button>
         </Reveal>
       </div>
@@ -476,10 +491,13 @@ function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-xs text-muted-foreground md:flex-row">
         <p className="flex items-center gap-2"><img src={logo} alt="" width={18} height={18} loading="lazy" className="h-[18px] w-[18px]" />© 2026 OpeNpaTh · MIT License</p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           <a href={GITHUB} target="_blank" rel="noreferrer" className="hover:text-foreground">GitHub</a>
           <a href="#features" className="hover:text-foreground">Features</a>
           <a href="#security" className="hover:text-foreground">Security</a>
+          <a href="/download" className="hover:text-foreground">Downloads</a>
+          <a href="#faq" className="hover:text-foreground">FAQ</a>
+          <a href="#contact" className="hover:text-foreground">Contact</a>
         </div>
       </div>
     </footer>
@@ -490,7 +508,8 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
-      <main>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-background focus:p-4">Skip to content</a>
+      <main id="main-content">
         <Hero />
         <Intro />
         <Statement />
@@ -498,7 +517,9 @@ function Index() {
         <Features />
         <HowItWorks />
         <Security />
+        <FAQ />
         <FinalCta />
+        <Contact />
       </main>
       <Footer />
     </div>
