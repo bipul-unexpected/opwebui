@@ -1,0 +1,363 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* OpeNpaTh: single warm-dark theme (Claude Desktop palette), Apple-style layout. */
+:root,
+.dark {
+  --radius: 1rem;
+  --background: oklch(0.18 0.004 85);
+  --foreground: oklch(0.96 0.007 95);
+  --card: oklch(0.235 0.006 75);
+  --card-foreground: oklch(0.96 0.007 95);
+  --popover: oklch(0.235 0.006 75);
+  --popover-foreground: oklch(0.96 0.007 95);
+  --primary: oklch(0.67 0.13 40);
+  --primary-foreground: oklch(0.99 0.004 95);
+  --primary-soft: oklch(0.82 0.09 40);
+  --secondary: oklch(0.215 0.006 75);
+  --secondary-foreground: oklch(0.96 0.007 95);
+  --muted: oklch(0.26 0.006 75);
+  --muted-foreground: oklch(0.7 0.012 80);
+  --accent: oklch(0.28 0.008 70);
+  --accent-foreground: oklch(0.96 0.007 95);
+  --destructive: oklch(0.58 0.18 25);
+  --destructive-foreground: oklch(0.99 0.004 95);
+  --border: oklch(1 0.01 85 / 9%);
+  --input: oklch(1 0.01 85 / 14%);
+  --ring: oklch(0.67 0.13 40);
+  --ink: oklch(0.15 0.004 85);
+  --live: oklch(0.72 0.12 152);
+  --pending: oklch(0.77 0.14 70);
+  --crush: oklch(0.6 0.19 25);
+  --chart-1: oklch(0.67 0.13 40);
+  --chart-2: oklch(0.72 0.12 152);
+  --chart-3: oklch(0.77 0.14 70);
+  --chart-4: oklch(0.6 0.19 25);
+  --chart-5: oklch(0.82 0.09 40);
+  --sidebar: oklch(0.215 0.006 75);
+  --sidebar-foreground: oklch(0.96 0.007 95);
+  --sidebar-primary: oklch(0.67 0.13 40);
+  --sidebar-primary-foreground: oklch(0.99 0.004 95);
+  --sidebar-accent: oklch(0.28 0.008 70);
+  --sidebar-accent-foreground: oklch(0.96 0.007 95);
+  --sidebar-border: oklch(1 0.01 85 / 9%);
+  --sidebar-ring: oklch(0.67 0.13 40);
+  --font-sans-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono-stack: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --gradient-warm: linear-gradient(120deg, oklch(0.82 0.09 40), oklch(0.67 0.13 40) 45%, oklch(0.77 0.14 70));
+  --shadow-float: 0 40px 120px -30px oklch(0.67 0.13 40 / 35%), 0 20px 50px -20px oklch(0 0 0 / 70%);
+}
+
+@theme inline {
+  --color-primary-soft: var(--primary-soft);
+  --color-ink: var(--ink);
+  --color-live: var(--live);
+  --color-pending: var(--pending);
+  --color-crush: var(--crush);
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
+}
+
+.text-gradient {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-glow {
+  background: radial-gradient(60% 50% at 50% 0%, oklch(0.67 0.13 40 / 22%), transparent 70%);
+}
+
+.shadow-float {
+  box-shadow: var(--shadow-float);
+}
+
+/* ---------- Motion system (Apple-style easing) ---------- */
+:root {
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.985);
+  filter: blur(8px);
+  transition:
+    opacity 1.1s var(--ease-apple),
+    transform 1.1s var(--ease-apple),
+    filter 1.1s var(--ease-apple);
+  will-change: opacity, transform, filter;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Headline words rise in one by one on load */
+@keyframes word-rise {
+  from { opacity: 0; transform: translateY(0.45em) rotateX(-35deg); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: word-rise 1.1s var(--ease-apple) forwards;
+}
+.word-wrap { perspective: 800px; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { opacity: 0; animation: fade-up 1s var(--ease-apple) forwards; }
+
+/* Moving sheen across gradient text */
+@keyframes sheen {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-gradient {
+  background-size: 200% auto;
+  animation: sheen 6s linear infinite;
+}
+
+/* Breathing glow */
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+.hero-glow { animation: glow-breathe 8s ease-in-out infinite; }
+
+/* Card hover lift */
+.lift {
+  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-apple), border-color 0.4s ease;
+}
+.lift:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: var(--shadow-float);
+}
+
+/* Icon nudge on card hover */
+.lift .lift-icon { transition: transform 0.6s var(--ease-spring); }
+.lift:hover .lift-icon { transform: scale(1.15) rotate(-6deg); }
+
+/* Timeline line draws across */
+.draw-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.6s var(--ease-apple) 0.2s;
+}
+.is-visible .draw-line,
+.draw-line.is-visible { transform: scaleX(1); }
+
+/* Crush pulse */
+@keyframes crush-ring {
+  0% { box-shadow: 0 0 0 0 oklch(0.6 0.19 25 / 55%); }
+  100% { box-shadow: 0 0 0 14px oklch(0.6 0.19 25 / 0%); }
+}
+.crush-pulse { animation: crush-ring 2s var(--ease-apple) infinite; }
+
+/* Stop & Crush: violent shake while crushing */
+@keyframes crush-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  15% { transform: translate(-7px, 3px) rotate(-0.6deg); }
+  30% { transform: translate(6px, -4px) rotate(0.5deg); }
+  45% { transform: translate(-5px, -3px) rotate(-0.4deg); }
+  60% { transform: translate(5px, 4px) rotate(0.5deg); }
+  75% { transform: translate(-3px, 2px) rotate(-0.3deg); }
+  90% { transform: translate(2px, -2px) rotate(0.2deg); }
+}
+.crush-shake { animation: crush-shake 0.65s var(--ease-apple); }
+
+/* Red flash that sweeps the terminal while crushing */
+@keyframes crush-flash {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.crush-flash {
+  background: radial-gradient(80% 80% at 50% 50%, oklch(0.6 0.19 25 / 45%), transparent 75%);
+  animation: crush-flash 0.65s ease-out forwards;
+}
+
+/* Crushed overlay stamps in */
+@keyframes crush-stamp {
+  0% { opacity: 0; transform: scale(1.8) rotate(-8deg); filter: blur(6px); }
+  60% { opacity: 1; transform: scale(0.94) rotate(1deg); filter: none; }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.crush-stamp { animation: crush-stamp 0.55s var(--ease-spring) both; }
+
+/* Red glow ripples across the card while crushing */
+@keyframes crush-glow {
+  0% { box-shadow: 0 0 0 0 oklch(0.6 0.19 25 / 0%); }
+  35% { box-shadow: 0 0 90px -10px oklch(0.6 0.19 25 / 55%), 0 20px 50px -20px oklch(0 0 0 / 70%); }
+  100% { box-shadow: 0 0 40px -12px oklch(0.6 0.19 25 / 30%), 0 20px 50px -20px oklch(0 0 0 / 70%); }
+}
+.crush-glow { animation: crush-glow 0.65s ease-out forwards; }
+
+/* Card settles down slightly after the crush */
+@keyframes crush-settle {
+  0% { transform: scale(0.985); }
+  100% { transform: scale(1); }
+}
+.crush-settle { animation: crush-settle 0.9s var(--ease-spring) both; }
+
+/* Restart button gently pulses to draw the eye */
+@keyframes restart-glow {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.67 0.13 40 / 45%); }
+  50% { box-shadow: 0 0 0 7px oklch(0.67 0.13 40 / 0%); }
+}
+.restart-glow { animation: restart-glow 1.8s var(--ease-apple) infinite; }
+
+/* How-it-works steps: circles spring in with a glow ring ripple */
+@keyframes step-pop {
+  0% { opacity: 0; transform: scale(0.4); box-shadow: 0 0 0 0 oklch(0.67 0.13 40 / 50%); }
+  55% { opacity: 1; transform: scale(1.12); box-shadow: 0 0 0 10px oklch(0.67 0.13 40 / 12%); }
+  100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 18px oklch(0.67 0.13 40 / 0%); }
+}
+.step-pop {
+  opacity: 0;
+  animation: step-pop 0.9s var(--ease-spring) both;
+  animation-play-state: paused;
+}
+.is-visible .step-pop { animation-play-state: running; }
+
+/* Light pulse traveling along the connector line */
+@keyframes line-pulse {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { left: calc(100% - 7px); opacity: 0; }
+}
+.line-pulse { animation: line-pulse 4.5s var(--ease-apple) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .word, .fade-up { opacity: 1; transform: none; filter: none; transition: none; animation: none; }
+  .text-gradient, .hero-glow, .crush-pulse { animation: none; }
+  .draw-line { transform: none; transition: none; }
+  .lift, .lift:hover { transform: none; transition: none; }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans-stack);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.011em;
+  }
+}
+
+/* Gradient words run both the entrance and the sheen */
+.word.text-gradient {
+  animation:
+    word-rise 1.1s var(--ease-apple) forwards,
+    sheen 6s linear infinite;
+}
+
+/* Headings: words rise when scrolled into view */
+.word-iv {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em) rotateX(-40deg);
+  transform-origin: 50% 100%;
+  filter: blur(10px);
+}
+.in-view .word-iv {
+  animation: word-rise 1s var(--ease-apple) forwards;
+}
+.in-view .word-iv.text-gradient {
+  animation:
+    word-rise 1s var(--ease-apple) forwards,
+    sheen 6s linear infinite;
+}
+
+/* Tracking tightens as big type settles */
+@keyframes track-in {
+  from { letter-spacing: 0.02em; }
+  to { letter-spacing: -0.035em; }
+}
+.track-in { animation: track-in 1.6s var(--ease-apple) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .word-iv, .in-view .word-iv { opacity: 1; transform: none; filter: none; animation: none; }
+  .track-in { animation: none; }
+  .crush-shake, .crush-flash, .crush-glow, .crush-settle, .restart-glow, .line-pulse { animation: none; }
+  .step-pop { animation: none; opacity: 1; transform: none; }
+  .crush-stamp { animation: none; opacity: 1; transform: none; }
+}
+
+.type-caret { display:inline-block; width:0.06em; height:0.9em; margin-left:0.06em; vertical-align:-0.08em; background: var(--primary); animation: caret-blink 1s steps(1) infinite; }
+@keyframes caret-blink { 50% { opacity: 0; } }
