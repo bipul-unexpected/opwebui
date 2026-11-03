@@ -9,7 +9,11 @@ export const Route = createFileRoute("/download")({
     { name: "description", content: "Download OpenPath, the open source AI to local workspace bridge. Choose Windows portable or installer, macOS, Linux, source and checksums." },
     { property: "og:title", content: "Download OpenPath" },
     { property: "og:description", content: "Get OpenPath for Windows, macOS or Linux directly from GitHub Releases." },
-  ] }),
+    { property: "og:url", content: "https://openpath.biz.id/download" },
+    { name: "twitter:url", content: "https://openpath.biz.id/download" },
+    { name: "twitter:title", content: "Download OpeNpaTh for Windows, macOS and Linux" },
+    { name: "twitter:description", content: "Get OpeNpaTh directly from the official GitHub Releases." },
+  ], links: [{ rel: "canonical", href: "https://openpath.biz.id/download" }] }),
   component: DownloadPage,
 });
 const names: Record<Platform, string> = { windows: "Windows", macos: "macOS", linux: "Linux", other: "Source & verification" };

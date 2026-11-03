@@ -34,20 +34,36 @@ const QUICKSTART =
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "OpeNpaTh — Your Cloud AI's Brain. Your Local PC's Hands." },
-      {
-        name: "description",
-        content:
-          "Connect cloud AI to a local workspace with OpenPath: file tools, terminal execution, approvals, audit logs, Git snapshots and an emergency stop.",
-      },
-      { property: "og:title", content: "OpeNpaTh — Your Cloud AI's Brain. Your Local PC's Hands." },
-      {
-        property: "og:description",
-        content: "The local-to-cloud AI execution bridge. Zero-account tunnels, Git time machine, Master Kill Switch.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { title: "OpeNpaTh — Connect Cloud AI to Your Local Files and Terminal" },
+      { name: "title", content: "OpeNpaTh — Connect Cloud AI to Your Local Files and Terminal" },
+      { name: "description", content: "Connect ChatGPT, Claude or Grok to a local workspace. OpeNpaTh is an open-source AI bridge with file tools, terminal access, approvals and an emergency stop." },
+      { name: "keywords", content: "OpeNpaTh, OpenPath AI, AI local workspace, AI to local terminal bridge, connect ChatGPT to local folder, connect Grok to local PC, local DevOps runner, FastAPI workspace gateway, Cloudflare tunnel, AI approval queue, AI kill switch, connection.md" },
+      { property: "og:url", content: "https://openpath.biz.id/" },
+      { property: "og:title", content: "OpeNpaTh — Connect Cloud AI to Your Local Workspace" },
+      { property: "og:description", content: "An open-source AI bridge with local file tools, terminal access, approval modes, audit logs and an emergency stop." },
+      { name: "twitter:url", content: "https://openpath.biz.id/" },
+      { name: "twitter:title", content: "OpeNpaTh — Connect Cloud AI to Your Local Workspace" },
+      { name: "twitter:description", content: "Connect cloud AI to local files and terminal tools with approval modes and an emergency stop." },
     ],
+    links: [{ rel: "canonical", href: "https://openpath.biz.id/" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "OpeNpaTh",
+        alternateName: ["OpenPath", "OpeNpaTh Local Automation Runner"],
+        url: "https://openpath.biz.id/",
+        downloadUrl: "https://openpath.biz.id/download",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Windows, macOS, Linux",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        description: "An open-source local automation runner and workspace gateway connecting cloud AI to local file tools and terminal commands.",
+        featureList: ["Workspace file API path jail", "Automatic and manual approval modes", "Cloudflare and Ngrok tunnels", "Python SDK and connection.md", "Process management and audit logs", "Master Stop & Crush emergency switch"],
+        author: { "@type": "Person", name: "Bipul", url: "https://github.com/bipul-unexpected" },
+        sameAs: "https://github.com/bipul-unexpected/OpeNpaTh",
+      }).replace(/</g, "\\u003c"),
+    }],
   }),
   component: Index,
 });
@@ -130,7 +146,7 @@ function Hero() {
               <img key={alt} src={src} alt={alt} title={alt} className="h-6 w-6 transition-transform duration-300 hover:-translate-y-0.5 hover:scale-110" />
             ))}
           </span>{" "}
-          to one local folder. Paste connection.md, watch it build — stop anytime.
+          including ChatGPT, Claude and Grok to one local folder. Paste connection.md, watch it build — stop anytime.
         </p>
         <div className="fade-up" style={{ animationDelay: "3800ms" }}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -173,7 +189,7 @@ function Intro() {
       <Reveal className="text-center">
         <p className="text-sm font-medium text-primary">Small introduction</p>
         <h2 className="mx-auto mt-3 max-w-3xl text-4xl font-semibold tracking-[-0.03em] md:text-6xl">
-          <InViewWords segments={[{ text: "Meet OpeNpaTh." }, { text: "A bridge, not a black box.", className: "text-muted-foreground" }]} />
+          <InViewWords segments={[{ text: "Meet OpeNpaTh." }, { text: "An AI-to-local workspace bridge.", className: "text-muted-foreground" }]} />
         </h2>
       </Reveal>
       <div className="mt-16 grid gap-5 md:grid-cols-3">

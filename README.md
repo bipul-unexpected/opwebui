@@ -1,4 +1,4 @@
-# OpeNpaTh website
+# OpeNpaTh AI Bridge — Local Automation Runner website
 
 Marketing site and download page for [OpeNpaTh](https://github.com/bipul-unexpected/OpeNpaTh). Built with TanStack Start, React, Vite and Tailwind CSS.
 
@@ -23,4 +23,8 @@ npx wrangler dev --config .output/server/wrangler.json --local
 
 The existing `npm run preview` / Vite preview currently expects a different server output path and returns HTTP 500; use the Cloudflare worker preview above instead.
 
-Before production: set the Web3Forms key in the hosting build environment and test delivery; configure the real site domain, canonical URLs, sitemap, social preview and search console after the domain is known. Search rankings cannot be guaranteed. Audit privacy/legal requirements for the deployment and review the product security model before publishing.
+## Search and production checklist
+
+The public domain is `https://openpath.biz.id`. The home and download pages have canonical URLs and social metadata; `public/robots.txt`, `public/sitemap.xml`, and `public/og-banner.jpg` are served from the site root. Update the sitemap when public pages change and keep the structured data accurate. After deployment, verify the domain in Google Search Console, submit `https://openpath.biz.id/sitemap.xml`, and test both pages and the sharing image. Search rankings and rich results are not guaranteed.
+
+Set the Web3Forms key in the hosting build environment and test delivery. Audit privacy/legal requirements for the deployment and review the product security model before publishing. The file API jail is not a hard sandbox for arbitrary shell commands; use approvals or OS-level isolation for untrusted agents.

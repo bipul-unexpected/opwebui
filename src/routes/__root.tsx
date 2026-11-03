@@ -78,9 +78,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "OpeNpaTh" },
+      { name: "author", content: "Bipul (bipul-unexpected)" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "theme-color", content: "#141310" },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "OpeNpaTh" },
+      { property: "og:image", content: "https://openpath.biz.id/og-banner.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "OpeNpaTh: your cloud AI and local workspace" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://openpath.biz.id/og-banner.jpg" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
